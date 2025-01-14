@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'skills',
         'email',
         'password',
     ];
@@ -44,5 +45,25 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function setSkillsAttribute($value)
+    {
+        $this->attributes['skills'] = implode(',', (array) $value);
+    }
+
+    public function getSkillsAttribute($value)
+    {
+        return explode(',', $value);
+    }
+
+    public function tasks()
+    {
+        return $this->belongsToMany(Task::class);
+    }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
     }
 }
