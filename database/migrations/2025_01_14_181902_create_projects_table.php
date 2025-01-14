@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->foreignId('manager_id')
+                ->constrained('users') // References 'id' column in `users` table
+                ->onUpdate('cascade') // Prevent updates if referenced ID changes
+                ->onDelete('restrict'); // Prevent deletion of users with related projects
+            $table->boolean('delivered')->default(0);
             $table->timestamps();
         });
     }
