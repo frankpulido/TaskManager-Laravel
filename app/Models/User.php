@@ -59,11 +59,11 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        return $this->belongsToMany(Task::class);
+        return $this->hasMany(Task::class);
     }
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class);
+        return $this->hasMany(Project::class);
     }
 }
