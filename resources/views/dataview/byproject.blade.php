@@ -10,7 +10,7 @@
                 <article class="grid-item">
                     <h3><b> Project ID : {{ $project_id }} | Title : {{ $projects[$project_id]['name'] }} </b></h3>
                     @if($projects[$project_id]['delivered'])
-                        <h3 style="color: green;"><b>DELIVERED</b></h3>
+                        <h3 style="color: green;"><b>PROJECT RELEASED</b></h3>
                     @endif
 
                     @foreach ($tasks as $task)

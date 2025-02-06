@@ -5,6 +5,7 @@ namespace Database\Seeders;
 //use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Task;
+use App\Models\Project;
 use Carbon\Carbon; // For date formatting
 
 class TaskSeeder extends Seeder
@@ -140,6 +141,14 @@ class TaskSeeder extends Seeder
                 'date_delivered' => $task['date_delivered'],
                 'date_approved' => $task['date_approved'],
             ]);
+        }
+
+        // After all tasks have been seeded, update project delivered status
+        $projects = Project::all();
+        foreach ($projects as $project) {
+            $allTasksReleased = !$project->tasks()->where('task_status', '!=', 'RELEASED')->exists();
+            $project->delivered = $allTasksReleased;
+            $project->save();
         }
     }
 }

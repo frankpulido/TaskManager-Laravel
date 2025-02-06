@@ -81,6 +81,5 @@ class ProjectSeeder extends Seeder
                 'delivered' => $project['delivered']
             ]);
         }
-
     }
 }
