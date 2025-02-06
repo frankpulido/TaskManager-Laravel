@@ -21,7 +21,7 @@ class Task extends Model
         'task_status', // updated by triggers on dates below
         'task_description',
         'programmer_id', // not nullable
-        'date_deadline', // NEW ATTRIBUTE
+        'date_deadline', // NEW ATTRIBUTE - NOT IN JSON PERSISTENCE VERSION
         'date_init',
         'date_delivered', // If not approved this attribute may be overwritten later when delivered for second time.
         'date_approved'
