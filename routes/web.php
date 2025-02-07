@@ -14,4 +14,5 @@ Route::get('/dataview/byprogress', [DataViewController::class, 'byProgress'])->n
 Route::get('/dataview/bykind', [DataViewController::class, 'byKind'])->name('dataview.bykind');
 
 Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
+Route::post('/task', [TaskController::class, 'store'])->name('task.store');
 Route::get('/task/show', [TaskController::class, 'show'])->name('task.show');

@@ -146,9 +146,12 @@ class TaskSeeder extends Seeder
         // After all tasks have been seeded, update project delivered status
         $projects = Project::all();
         foreach ($projects as $project) {
-            $allTasksReleased = !$project->tasks()->where('task_status', '!=', 'RELEASED')->exists();
-            $project->delivered = $allTasksReleased;
-            $project->save();
+            // Check if the project has any tasks.
+            if ($project->tasks()->count() > 0) {
+                $allTasksReleased = !$project->tasks()->where('task_status', '!=', 'RELEASED')->exists();
+                $project->delivered = $allTasksReleased;
+                $project->save();
+            }
         }
     }
 }
