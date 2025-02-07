@@ -47,7 +47,7 @@
             <a href="https://www.linkedin.com/in/frankpulidoalvarez/" target="_blank" rel="noopener noreferrer" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
                 <img src="{{ asset('images/linkedin.png') }}" alt="LinkedIn" style="width: 45px; height: 45px;">
             </a>
-            <a href="https://www.discord.com/users/frankpulidoalvarez" target="_blank" rel="noopener noreferrer" style="display: inline-block; vertical-align: middle;">
+            <a href="https://www.discord.com/users/frankpulidoalvarez" target="_blank" rel="noopener noreferrer" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
                 <img src="{{ asset('images/discord.png') }}" alt="Discord" style="width: 45px; height: 45px;">
             </a>
         </section>

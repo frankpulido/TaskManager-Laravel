@@ -22,6 +22,18 @@
                         <p>Released : {{ $task['date_approved'] }}</p>
                     @endif
 
+                    @if (empty($task['date_approved']))
+                        @php
+                            $deadline = \Carbon\Carbon::parse($task['date_deadline']);
+                            $daysLeft = now()->diffInDays($deadline);
+                        @endphp
+                        @if ($daysLeft >= 0)
+                            <p style="color: green;">Deadline {{ date('Y-m-d', $deadline->timestamp) }}. Days to deadline: {{ (int)$daysLeft }}</p>
+                        @else
+                            <p style="color: red;">Deadline {{ date('Y-m-d', $deadline->timestamp) }}. Behind schedule: {{ abs((int)$daysLeft) }} days</p>
+                        @endif
+                    @endif
+
                 </article>
             @endforeach
         @else

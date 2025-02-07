@@ -45,7 +45,7 @@ class TaskSeeder extends Seeder
                 'task_kind' => 'DATABASE',
                 'task_status' => 'DELIVERED',
                 'task_description' => 'Database schema design and initial setup.',
-                'date_deadline' => Carbon::now()->addDays(3),
+                'date_deadline' => Carbon::now()->subDays(3),
                 'date_init' => Carbon::now()->subDays(90),
                 'date_delivered' => Carbon::now()->subDays(10),
                 'date_approved' => null,
