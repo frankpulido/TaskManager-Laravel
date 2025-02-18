@@ -16,3 +16,6 @@ Route::get('/dataview/bykind', [DataViewController::class, 'byKind'])->name('dat
 Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
 Route::post('/task', [TaskController::class, 'store'])->name('task.store');
 Route::get('/task/show', [TaskController::class, 'show'])->name('task.show');
+Route::get('/task/update', [TaskController::class, 'update'])->name('task.update');
+Route::get('/task/delete', [TaskController::class, 'destroy'])->name('task.delete');
+

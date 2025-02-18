@@ -18,12 +18,8 @@ class TaskController extends Controller
         return view('task.create', compact('projects', 'programmers', 'taskKinds'));
     }
 
-    public function show() {
-        return Task::all();
-    }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $validated = $request->validate([
             'project_id' => 'required|exists:projects,id',
             'programmer_id' => 'required|exists:users,id',
@@ -47,4 +43,37 @@ class TaskController extends Controller
             ->with('success', 'Task created successfully. You can create another task.')
             ->with('created_task', $task);
     }
+
+
+    public function show(Request $request) {
+        $tasks = Task::all(); // Get all tasks from the database
+        $selectedTask = null;
+
+        // Check if a task ID was submitted via GET request (from the form submission)
+        if (request()->has('id_task')) {
+            $id = (int) $request->input('id_task');
+            $selectedTask = Task::findOrFail($id); // Retrieve the selected task by ID
+        }
+
+        // If no task ID was submitted or the task wasn't found, select the first task (if any)
+        if (!$selectedTask && $tasks->isNotEmpty()) {
+            $selectedTask = $tasks->first();
+        }
+
+        return view('task.show', [
+            'tasks' => $tasks,
+            'selectedTask' => $selectedTask,
+        ]);
+    }
+
+
+    public function update() {
+
+    }
+
+
+    public function destroy() {
+        
+    }
+
 }
