@@ -1,6 +1,25 @@
 # THE PROJECT
 
 
+# CLONING THE PROJECT AND SET UP
+
+The project was developed in Laravel framework. First clone it :
+
+git clone https://github.com/frankpulido/TaskManager-Laravel.git
+
+Then run Composer to get needed dependencies :
+
+    install composer
+
+If you are using Apache and when trying to open in browser you get a "Failed to open stream : Permission denied" error, run :
+
+    sudo chown -R daemon:daemon storage
+    sudo chown -R daemon:daemon bootstrap/cache
+
+(Those 2 commands will change the directories ownership to the web server user)
+
+
+
 # GIT FLOW
 
 1) Initialize :
