@@ -7,9 +7,28 @@ The project was developed in Laravel framework. First clone it :
 
 git clone https://github.com/frankpulido/TaskManager-Laravel.git
 
+
+
+Create .env file using .env.example
+
+
 Then run Composer to get needed dependencies :
 
     install composer
+
+
+You will need the develop branch :
+
+    git fetch --all
+    git checkout -b develop origin/develop
+
+
+Open mariadb and create the database, named as indicated in .env
+
+The run migration and seed :
+
+php artisan migrate --seed
+
 
 If you are using Apache and when trying to open in browser you get a "Failed to open stream : Permission denied" error, run :
 
