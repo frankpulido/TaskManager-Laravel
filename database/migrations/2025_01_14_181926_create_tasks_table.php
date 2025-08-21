@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('project_id')
+                ->constrained('projects')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->enum('task_kind', ['FRONTOFFICE', 'BACKOFFICE', 'DATABASE']);
+            $table->enum('task_status', ['PIPELINED', 'INIT', 'DELIVERED', 'RELEASED'])
+                ->default('PIPELINED');
+            $table->string('task_description');
+            $table->foreignId('programmer_id')
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('restrict');
+            $table->dateTime('date_deadline');
+            $table->dateTime('date_init')->nullable();
+            $table->dateTime('date_delivered')->nullable();
+            $table->dateTime('date_approved')->nullable();
             $table->timestamps();
         });
     }
@@ -24,4 +40,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('tasks');
     }
+    
 };
